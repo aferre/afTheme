@@ -1,0 +1,286 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		382B60BE13928D9500F4A127 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 382B60BD13928D9500F4A127 /* UIKit.framework */; };
+		382B60C013928D9500F4A127 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 382B60BF13928D9500F4A127 /* Foundation.framework */; };
+		382B60C213928D9500F4A127 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 382B60C113928D9500F4A127 /* CoreGraphics.framework */; };
+		382B60C813928D9500F4A127 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 382B60C613928D9500F4A127 /* InfoPlist.strings */; };
+		382B60CB13928D9500F4A127 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 382B60CA13928D9500F4A127 /* main.m */; };
+		382B60CE13928D9500F4A127 /* afThemesDemoAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 382B60CD13928D9500F4A127 /* afThemesDemoAppDelegate.m */; };
+		382B60D113928D9500F4A127 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 382B60CF13928D9500F4A127 /* MainWindow.xib */; };
+		382B60D413928D9500F4A127 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 382B60D313928D9500F4A127 /* RootViewController.m */; };
+		382B60D713928D9500F4A127 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 382B60D513928D9500F4A127 /* RootViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		382B60B913928D9500F4A127 /* afThemesDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = afThemesDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		382B60BD13928D9500F4A127 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		382B60BF13928D9500F4A127 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		382B60C113928D9500F4A127 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		382B60C513928D9500F4A127 /* afThemesDemo-Info.plist */ = {isa = PBXFileReference; path = "afThemesDemo-Info.plist"; sourceTree = "<group>"; };
+		382B60C713928D9500F4A127 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		382B60C913928D9500F4A127 /* afThemesDemo-Prefix.pch */ = {isa = PBXFileReference; path = "afThemesDemo-Prefix.pch"; sourceTree = "<group>"; };
+		382B60CA13928D9500F4A127 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		382B60CC13928D9500F4A127 /* afThemesDemoAppDelegate.h */ = {isa = PBXFileReference; path = afThemesDemoAppDelegate.h; sourceTree = "<group>"; };
+		382B60CD13928D9500F4A127 /* afThemesDemoAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = afThemesDemoAppDelegate.m; sourceTree = "<group>"; };
+		382B60D013928D9500F4A127 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		382B60D213928D9500F4A127 /* RootViewController.h */ = {isa = PBXFileReference; path = RootViewController.h; sourceTree = "<group>"; };
+		382B60D313928D9500F4A127 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		382B60D613928D9500F4A127 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		382B60B613928D9500F4A127 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				382B60BE13928D9500F4A127 /* UIKit.framework in Frameworks */,
+				382B60C013928D9500F4A127 /* Foundation.framework in Frameworks */,
+				382B60C213928D9500F4A127 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		382B60AE13928D9500F4A127 = {
+			isa = PBXGroup;
+			children = (
+				382B60C313928D9500F4A127 /* afThemesDemo */,
+				382B60BC13928D9500F4A127 /* Frameworks */,
+				382B60BA13928D9500F4A127 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		382B60BA13928D9500F4A127 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				382B60B913928D9500F4A127 /* afThemesDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		382B60BC13928D9500F4A127 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				382B60BD13928D9500F4A127 /* UIKit.framework */,
+				382B60BF13928D9500F4A127 /* Foundation.framework */,
+				382B60C113928D9500F4A127 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		382B60C313928D9500F4A127 /* afThemesDemo */ = {
+			isa = PBXGroup;
+			children = (
+				382B60CC13928D9500F4A127 /* afThemesDemoAppDelegate.h */,
+				382B60CD13928D9500F4A127 /* afThemesDemoAppDelegate.m */,
+				382B60CF13928D9500F4A127 /* MainWindow.xib */,
+				382B60D213928D9500F4A127 /* RootViewController.h */,
+				382B60D313928D9500F4A127 /* RootViewController.m */,
+				382B60D513928D9500F4A127 /* RootViewController.xib */,
+				382B60C413928D9500F4A127 /* Supporting Files */,
+			);
+			path = afThemesDemo;
+			sourceTree = "<group>";
+		};
+		382B60C413928D9500F4A127 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				382B60C513928D9500F4A127 /* afThemesDemo-Info.plist */,
+				382B60C613928D9500F4A127 /* InfoPlist.strings */,
+				382B60C913928D9500F4A127 /* afThemesDemo-Prefix.pch */,
+				382B60CA13928D9500F4A127 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		382B60B813928D9500F4A127 /* afThemesDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 382B60DA13928D9500F4A127 /* Build configuration list for PBXNativeTarget "afThemesDemo" */;
+			buildPhases = (
+				382B60B513928D9500F4A127 /* Sources */,
+				382B60B613928D9500F4A127 /* Frameworks */,
+				382B60B713928D9500F4A127 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = afThemesDemo;
+			productName = afThemesDemo;
+			productReference = 382B60B913928D9500F4A127 /* afThemesDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		382B60B013928D9500F4A127 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "Ferré";
+			};
+			buildConfigurationList = 382B60B313928D9500F4A127 /* Build configuration list for PBXProject "afThemesDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 382B60AE13928D9500F4A127;
+			productRefGroup = 382B60BA13928D9500F4A127 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				382B60B813928D9500F4A127 /* afThemesDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		382B60B713928D9500F4A127 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				382B60C813928D9500F4A127 /* InfoPlist.strings in Resources */,
+				382B60D113928D9500F4A127 /* MainWindow.xib in Resources */,
+				382B60D713928D9500F4A127 /* RootViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		382B60B513928D9500F4A127 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				382B60CB13928D9500F4A127 /* main.m in Sources */,
+				382B60CE13928D9500F4A127 /* afThemesDemoAppDelegate.m in Sources */,
+				382B60D413928D9500F4A127 /* RootViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		382B60C613928D9500F4A127 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				382B60C713928D9500F4A127 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		382B60CF13928D9500F4A127 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				382B60D013928D9500F4A127 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		382B60D513928D9500F4A127 /* RootViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				382B60D613928D9500F4A127 /* en */,
+			);
+			name = RootViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		382B60D813928D9500F4A127 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		382B60D913928D9500F4A127 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		382B60DB13928D9500F4A127 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "afThemesDemo/afThemesDemo-Prefix.pch";
+				INFOPLIST_FILE = "afThemesDemo/afThemesDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		382B60DC13928D9500F4A127 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "afThemesDemo/afThemesDemo-Prefix.pch";
+				INFOPLIST_FILE = "afThemesDemo/afThemesDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		382B60B313928D9500F4A127 /* Build configuration list for PBXProject "afThemesDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				382B60D813928D9500F4A127 /* Debug */,
+				382B60D913928D9500F4A127 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		382B60DA13928D9500F4A127 /* Build configuration list for PBXNativeTarget "afThemesDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				382B60DB13928D9500F4A127 /* Debug */,
+				382B60DC13928D9500F4A127 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 382B60B013928D9500F4A127 /* Project object */;
+}
