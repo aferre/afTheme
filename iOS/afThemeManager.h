@@ -19,7 +19,13 @@ DECLARE_SINGLETON_FOR_CLASS(afThemeManager)
 
 @property (nonatomic,retain) NSMutableDictionary *themesList;
 
+-(NSString *) pathToTheme:(NSString *)themeName;
+
+-(NSString *) rootPath;
+
 - (NSString *) currentTheme;
+
+- (void) setCurrentTheme:(NSString *)newTheme;
 
 - (NSString *) rootUrlString;
 
@@ -29,10 +35,14 @@ DECLARE_SINGLETON_FOR_CLASS(afThemeManager)
 
 - (NSString *) pathToThemesList;
 
+- (UIImage *) imageAtLocation:(NSString *)loc;
+
 - (NSArray *)imagesForTheme:(NSString *)themeName;
 
 - (NSArray *) stringsForTheme:(NSString *)themeName;
 
-- (NSDictionary *) dicoForTheme:(NSString *)th;
+- (NSMutableDictionary *) dicoForTheme:(NSString *)th;
+
+- (UIImage *) imageForTheme:(NSString *)themeName atLocation:(NSString *)location;
 
 @end

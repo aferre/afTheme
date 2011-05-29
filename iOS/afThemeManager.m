@@ -59,7 +59,6 @@
  */
 
 #import "afThemeManager.h"
-#import "JSON.h"
 #import "afStringExt.h"
 #import "NSFileManagerExtensions.h"
 #define THEME_SERVER_URL @"http://localhost:8000/"
@@ -70,6 +69,10 @@
 SYNTHESIZE_SINGLETON_FOR_CLASS(afThemeManager)
 
 @synthesize themesList;
+
+#pragma mark --
+#pragma mark -- Init and load
+#pragma mark --
 
 - (id) init{
 	self = [super init];
@@ -104,11 +107,47 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(afThemeManager)
     
 }
 
+#pragma mark --
+#pragma mark -- getters, setters
+#pragma mark --
+
+-(UIImage *) imageAtLocation:(NSString *)loc{
+
+    return [self imageForTheme:[self currentTheme] atLocation:loc];
+}
+- (UIImage *) imageForTheme:(NSString *)themeName atLocation:(NSString *)location{
+    NSString *path = [NSFileManager documentDirectory];
+    path = [path stringByAppendingPathComponent:@"Themes"];
+    path = [path stringByAppendingPathComponent:themeName];
+    path = [path stringByAppendingFormat:@"%@",location];
+    
+    return [UIImage imageWithContentsOfFile:path];
+}
+
 - (NSArray *) imagesForTheme:(NSString *)themeName{
     return [[self dicoForTheme:themeName] objectForKey:@"images"];
 }
+
 - (NSArray *) stringsForTheme:(NSString *)themeName{
     return [[self dicoForTheme:themeName] objectForKey:@"strings"];
+}
+
+- (NSString *) rootUrlString{
+    return THEME_SERVER_URL;
+}
+
+- (NSURL *) rootUrl{
+    return [NSURL URLWithString: THEME_SERVER_URL];
+}
+
+-(NSMutableDictionary *) dicoForTheme:(NSString *)the{
+    
+    return [self.themesList objectForKey:the];
+}
+
+- (void) setCurrentTheme:(NSString *)newTheme{
+    [[NSUserDefaults standardUserDefaults] setObject:newTheme forKey:@"currentTheme"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (NSString *) currentTheme{
@@ -125,6 +164,15 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(afThemeManager)
     
     return @"Default";
 }
+
+
+-(void) saveThemeList:(NSArray *)list{
+    
+}
+
+#pragma mark --
+#pragma mark -- Themes loading
+#pragma mark --
 
 -(void) loadTheme:(NSString *)th{
     
@@ -168,43 +216,61 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(afThemeManager)
         NSLog(@"URL %@",url);
         ASIHTTPRequest *req = [ASIHTTPRequest requestWithURL:url];
         req.delegate = self;
-        NSDictionary *dico = [NSDictionary dictionaryWithObject:[NSString stringWithFormat: @"LoadThemeImage:%@,%@",themeName,location] forKey:@"type"];
+        NSMutableDictionary *dico = [NSMutableDictionary dictionaryWithObject:[NSString stringWithFormat: @"LoadThemeImage:%@,%@",themeName,location] forKey:@"type"];
         [req setUserInfo:dico];
         [req startAsynchronous];
     }
 }
 
--(void) saveThemeList:(NSArray *)list{
-    
+#pragma mark --
+#pragma mark -- Paths
+#pragma mark --
+
+-(NSString *) pathToTheme:(NSString *)themeName atLocation:(NSString *)loc{
+    NSString *path = [self pathToTheme:themeName];
+    path = [path stringByAppendingFormat:@"%@",loc];
+    NSString *fn = [path lastPathComponent];
+    NSString *dir = [path stringByDeletingLastPathComponent];
+    NSError *er;
+    NSLog(@"CREATING DIR: %@",dir);
+    if (![[NSFileManager defaultManager] createDirectoryAtPath:dir withIntermediateDirectories:YES attributes:nil error:&er]){
+        NSLog(@"ERROR CREATING DIR: %@, %@, %@",dir,[er localizedDescription], [er localizedFailureReason]);
+    }
+    NSLog(@"Path returned is %@, filename is %@",path,fn);
+    return path;
 }
 
-- (void) downloadTheme:(NSString *)themeName{
-    
+-(NSString *) pathToTheme:(NSString *)themeName{
+    NSString *path = [self rootPath];
+    path = [path stringByAppendingPathComponent:themeName];
+    NSError *er;
+    if (![[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&er]){
+        NSLog(@"ERROR CREATING DIR: %@, %@, %@",path,[er localizedDescription], [er localizedFailureReason]);
+    }
+    return path;
 }
-
-- (NSString *) rootUrlString{
-    return THEME_SERVER_URL;
-}
-
-- (NSURL *) rootUrl{
-    return [NSURL URLWithString: THEME_SERVER_URL];
-}
-
--(NSString *) pathToThemesList{
+-(NSString *) rootPath{
     NSString *doc = [NSFileManager documentDirectory];
     NSString *path = [doc stringByAppendingPathComponent:@"Themes"];
     NSError *er;
-    [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&er];
+    if (![[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&er]){
+        NSLog(@"ERROR CREATING DIR: %@, %@, %@",path,[er localizedDescription], [er localizedFailureReason]);
+    }
+    return path;
+}
+-(NSString *) pathToThemesList{
+    NSString *path = [self rootPath];
+    NSError *er;
+    if (![[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&er]){
+        NSLog(@"ERROR CREATING DIR: %@, %@, %@",path,[er localizedDescription], [er localizedFailureReason]);
+    }
     path = [path stringByAppendingFormat:@"/themesList"];
     return path;
 }
 
--(NSMutableDictionary *) dicoForTheme:(NSString *)the{
-    
-    return [self.themesList objectForKey:the];
-}
-
-#pragma ASIHTTPREQUEST Delegate
+#pragma mark --
+#pragma mark -- ASIHTTPREQUEST Delegate
+#pragma mark -- 
 
 - (void) request:(ASIHTTPRequest *)request didReceiveData:(NSData *)data{
     
@@ -258,22 +324,13 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(afThemeManager)
         }
         [themesList writeToFile:[self pathToThemesList] atomically:YES];
     } else if ([reqType rangeOfString:@"LoadThemeImage:"].length != 0){
-        NSLog(@"%@ %@",[request responseString]);
-        
-        NSLog(@"Data is %@",data);
-        
         NSString *str = [reqType stringByReplacingOccurrencesOfString:@"LoadThemeImage:" withString:@""];
         NSArray * ar = [str componentsSeparatedByString:@","];
-        
         NSString *themeName = [ar objectAtIndex:0];
         NSString *loc = [ar objectAtIndex:1];
-        
-        NSString *path = [NSFileManager documentDirectory];
-        path = [path stringByAppendingPathComponent:@"Themes"];
-        path = [path stringByAppendingFormat:@"/%@%@",themeName,loc];
+        NSLog(@"Loading theme image %@ at %@",themeName, loc);
         NSError *er;
-        [[NSFileManager defaultManager] createDirectoryAtPath:[path stringByDeletingLastPathComponent] withIntermediateDirectories:YES attributes:nil error:&er];
-        if (![data writeToFile:path options:nil error:&er]){
+        if (![data writeToFile:[self pathToTheme:themeName atLocation:loc] options:NSDataWritingAtomic error:&er]){
             NSLog(@"Write returned error: %@", [er localizedDescription]);
         }
     }

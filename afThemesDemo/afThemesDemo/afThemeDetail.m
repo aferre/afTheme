@@ -7,10 +7,8 @@
 //
 
 #import "afThemeDetail.h"
-#import "JSON.h"
+#import "SBJsonPublic.h"
 #import "ASIHTTPRequest.h"
-#import "afThemedImage.h"
-#import "afASIQueue.h"
 #import "afThemeManager.h"
 #import "NSFileManagerExtensions.h"
 
@@ -45,7 +43,7 @@
 }
 
 -(void) useThisTheme{
-    
+    [[afThemeManager sharedafThemeManager] setCurrentTheme:currentTheme];   
 }
 
 - (void)dealloc
@@ -140,19 +138,10 @@
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil) {
             cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-            // afThemedImage *i = [[afThemedImage alloc] initWithTheme:currentTheme andLocation:[imgDico objectForKey:@"location"]];
-            NSString *path = [NSFileManager documentDirectory];
-            path = [path stringByAppendingPathComponent:@"Themes"];
-            path = [path stringByAppendingPathComponent:currentTheme];
-            path = [path stringByAppendingFormat:@"%@",[imgDico objectForKey:@"location"]];
             
-            UIImage *i = [UIImage imageWithContentsOfFile:path];
-            //UIImage *i = [UIImage imageNamed:path];
-            //UIImage *i = [UIImage imageWithData:[NSData dataWithContentsOfFile:path]];
+            UIImage *i = [[afThemeManager sharedafThemeManager] imageForTheme:currentTheme atLocation:[imgDico objectForKey:@"location"]];
             UIImageView *img = [[UIImageView alloc] initWithImage:i];
             
-            NSLog(@"PATH IS %@",path);
-            img.frame = CGRectMake(0, 0, 50,50);
             img.tag = 1;
             [cell addSubview:img];
             
@@ -168,20 +157,10 @@
         path = [path stringByAppendingPathComponent:currentTheme];
         path = [path stringByAppendingFormat:@"%@",[imgDico objectForKey:@"location"]];
         
-        UIImage *i = [UIImage imageWithContentsOfFile:path];
-        //UIImage *i = [UIImage imageNamed:path];
-        //UIImage *i = [UIImage imageWithData:[NSData dataWithContentsOfFile:path]];
+        UIImage *i = [[afThemeManager sharedafThemeManager] imageForTheme:currentTheme atLocation:[imgDico objectForKey:@"location"]];
         UIImageView *imgView = (UIImageView *) [cell viewWithTag:1];
         imgView.image = i;
         
-     /*   UIImageView *imgView = (UIImageView *) [cell viewWithTag:1];
-        //afThemedImage *i = [[afThemedImage alloc] initWithTheme:currentTheme andLocation:[imgDico objectForKey:@"location"]];
-        NSString *path = [NSFileManager documentDirectory];
-        path = [path stringByAppendingPathComponent:currentTheme];
-        path = [path stringByAppendingFormat:@"%@",[imgDico objectForKey:@"location"]];
-        UIImage *i = [UIImage imageWithContentsOfFile:path];
-        [imgView setImage:i];
-       */ 
         UILabel *titleLabel = (UILabel *)[cell viewWithTag:2];
         [titleLabel setText:[imgDico objectForKey:@"name"]];
         return cell;

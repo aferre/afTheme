@@ -7,6 +7,7 @@
 //
 
 #import "afThemesDemoAppDelegate.h"
+#import "afThemeManager.h"
 
 @implementation afThemesDemoAppDelegate
 
@@ -15,12 +16,23 @@
 
 @synthesize navigationController=_navigationController;
 
+@synthesize themeBrowser;
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
     // Add the navigation controller's view to the window and display.
-    self.window.rootViewController = self.navigationController;
+    
+    //[self.navigationController.view addSubview:self.themeBrowser.view];
+   // [self.window addSubview:self.themeBrowser.view];
+    //self.window.rootViewController = self.navigationController;
+    [self.window addSubview:self.navigationController.view];
+    [[afThemeManager sharedafThemeManager] load];
+    
     [self.window makeKeyAndVisible];
+    
+  //  [self.navigationController pushViewController:self.themeBrowser animated:YES];
+    
     return YES;
 }
 

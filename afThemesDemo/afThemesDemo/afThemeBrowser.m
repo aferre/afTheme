@@ -10,7 +10,6 @@
 #import "afThemeDetail.h"
 #import "afThemeManager.h"
 #import "ASIHTTPRequest.h"
-#import "JSON.h"
 
 #define THEME_SERVER_URL @"http://localhost:8000/"
 
@@ -43,9 +42,13 @@
 - (void)viewDidLoad{
     
     [super viewDidLoad];
+    
     self.navigationItem.title = @"Themes Browser";
+    self.navigationItem.rightBarButtonItem  = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(ref)];
 }
-
+-(void)ref{
+    [self.tableView reloadData];
+}
 - (void)viewDidUnload
 {
    // [themDetails release];
@@ -58,7 +61,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.tableView reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -67,7 +69,7 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated
-{
+{   
     [super viewWillDisappear:animated];
 }
 
